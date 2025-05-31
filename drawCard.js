@@ -554,7 +554,9 @@ async function renderBadgesSVG(badges, displayBadges) {
             <g class="achievement" style="animation-delay: 450ms" transform="translate(25, 0)">
                 <svg viewBox="0 0 24 24" width="24" height="24" overflow="visible" class="${iconClass}">
                     <circle cx="12" cy="12" r="50%" />
-                    ${fs.readFileSync(iconPath, { encoding: 'utf8', flag: 'r' })}
+                    <g transform="scale(0.65)" style="transform-origin: center;">
+                        ${fs.readFileSync(iconPath, { encoding: 'utf8', flag: 'r' })}
+                    </g>
                 </svg>
                 <text class="label  bold" x="35" y="17">${badgeName}</text>
             </g>
