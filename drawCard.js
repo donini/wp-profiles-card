@@ -10,9 +10,10 @@ const http = require('https');
  * @param {Avatar code in 64} avatar64 
  * @param {Formatted badges list} badges 
  * @param {Dynamic height value for the card based on content} dynHeight 
+ * @param {Display header section} displayHeader 
  * @returns SVG code with the user profile card
  */
-function renderCard(username, name, initials, membersince, avatar64, badges, dynHeight) {
+function renderCard(username, name, initials, membersince, avatar64, badges, dynHeight, displayHeader) {
 
 	let htmlResult =  `
 <svg width="500" height="${dynHeight}" viewBox="0 0 500 ${dynHeight}" fill="none" xmlns="http://www.w3.org/2000/svg" overflow="visible">
@@ -503,7 +504,7 @@ function renderCard(username, name, initials, membersince, avatar64, badges, dyn
 ]]>
 </style>
   <rect x="0" y="0" rx="4.5" height="99%" stroke="#e4e2e2" width="99%" fill="#ffffff" stroke-opacity="1" />
-    <g xmlns="http://www.w3.org/2000/svg" class="card-title" transform="translate(25, 35)">
+    ${('true' === displayHeader) ? `<g xmlns="http://www.w3.org/2000/svg" class="card-title" transform="translate(25, 35)">
         <g transform="translate(0, -15)">
 			<svg width="100" height="100">
 				<circle cx="50" cy="50" r="50%" stroke="#e4e2e2" fill="#ffffff" stroke-opacity="1" />
@@ -519,8 +520,8 @@ function renderCard(username, name, initials, membersince, avatar64, badges, dyn
 				<tspan x="0" y="65" class="subheader">Member Since: ${membersince}</tspan>
 			</text>
         </g>
-    </g>
-    <g class="badges" transform="translate(0, 140)">
+    </g>` : ''}
+    <g class="badges" transform="translate(0, ${('true' === displayHeader) ? '140' : '25'})">
         <svg viewBox="0 0 430 400" width="430" height="400" overflow="visible" class="row">
             ${badges}
         </svg>

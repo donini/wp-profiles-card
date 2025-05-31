@@ -16,12 +16,14 @@ const axios = require('axios');
  *  color: string HEX color
  *  foreground: string HEX color
  *  badges: boolean
+ *  header: boolean
  *  avatar: boolean
  * }
  */
 router.get('/card', async (req, res, next) => {
   let username      = req.query.username;
   let displayBadges = (undefined === req.query.badges) ? 'true' : req.query.badges;
+  let displayHeader = (undefined === req.query.header) ? 'true' : req.query.header;
   let refresh       = (undefined === req.query.refresh) ? 'false' : req.query.refresh;
   let color         = (undefined === req.query.color) ? '000000' : req.query.color; // TODO
   let foreground    = (undefined === req.query.foreground) ? 'ffffff' : req.query.foreground; // TODO
@@ -43,7 +45,7 @@ router.get('/card', async (req, res, next) => {
 
     const badges        = await draw.renderBadgesSVG(userData["badges"], displayBadges);
     const badgesCount   = userData["badges"].length;
-    const defaultHeight = 145;
+    const defaultHeight = ('true' === displayHeader) ? 145 : 50; // Reduced height when header is hidden
     const dynHeight     = ('true' === displayBadges) ? (defaultHeight + (32 * Math.floor((badgesCount > 4) ? badgesCount / 2 : badgesCount)) + ((badgesCount % 2 === 0) ? 0 : 30)) : defaultHeight;
 
 
@@ -67,7 +69,7 @@ router.get('/card', async (req, res, next) => {
         const contentType = response.headers['content-type'];
         const base64Image = `data:${contentType};base64,${base64}`;
 
-        let htmlResult = await draw.renderCard(username, name, initials, membersince, base64Image, badges, dynHeight);
+        let htmlResult = await draw.renderCard(username, name, initials, membersince, base64Image, badges, dynHeight, displayHeader);
 
         fs.writeFileSync(avatarPath + username + '/card.svg', htmlResult);
         console.log('✅ SVG created with embedded image.');
