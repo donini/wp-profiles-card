@@ -123,6 +123,30 @@ svg .card-box {
 	fill: rgb(78, 50, 136);
 }
 
+.badge-credits-mentor circle {
+	stroke: rgb(131, 41, 277);
+	stroke-width: 3px;
+}
+.badge-credits-mentor svg path {
+	fill: rgb(131, 41, 277);
+}
+
+.badge-credits-graduate circle {
+	stroke: rgb(174, 71, 242);
+	stroke-width: 3px;
+}
+.badge-credits-graduate svg path {
+	fill: rgb(174, 71, 242);
+}
+
+.badge-campus-connect-participant circle {
+	stroke: rgb(56, 88, 233);
+	stroke-width: 3px;
+}
+.badge-campus-connect-participant svg path {
+	fill: rgb(56, 88, 233);
+}
+
 .badge-sustainability-team circle,
 .badge-sustainability-contributor circle {
     fill: white;
