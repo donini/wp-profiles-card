@@ -1,9 +1,10 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "cardpress",
+  "account_id": "4c36203db208651b335d9806e5b0eb59",
   "main": "src/worker.ts",
   "compatibility_date": "2026-11-16",
-  "workers_dev": false,
+  "workers_dev": true,
   "assets": {
     "directory": "./public",
     "binding": "ASSETS",
@@ -13,7 +14,7 @@
   "d1_databases": [{
     "binding": "DB",
     "database_name": "cardpress",
-    "database_id": "00000000-0000-0000-0000-000000000000",
+    "database_id": "ccae7089-2f01-4c51-8c10-3c0fd10f93da",
     "migrations_dir": "migrations"
   }],
   "vars": { "DEMO_MODE": "false", "PROFILE_TTL_SECONDS": "86400" },

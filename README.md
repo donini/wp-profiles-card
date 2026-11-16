@@ -1,6 +1,6 @@
 # CardPress · Cloudflare edition
 
-CardPress rebuilt for Cloudflare Workers, Static Assets, and D1. The previous Express application remains available in Git history. This version is ready for local testing; Cloudflare deployment and DNS migration are separate steps.
+CardPress rebuilt for Cloudflare Workers, Static Assets, and D1. The previous Express application remains available in Git history. Published on Cloudflare Workers at https://cardpress.cardpress-cloudflare.workers.dev. Local development remains available; the existing custom domain has not been moved.
 
 ## Test locally
 
@@ -48,6 +48,8 @@ Copying a localhost link to GitHub will not make the image publicly accessible. 
 | `npm run dev` | Local Worker + local D1, using real profiles |
 | `npm run dev:demo` | Local Worker + explicit sample data |
 | `npm run db:local` | Apply database migrations locally only |
+| `npm run db:remote` | Apply migrations to the configured Cloudflare D1 database |
+| `npm run deploy` | Build and publish to the configured Cloudflare account |
 | `npm run typecheck` | Check TypeScript |
 | `npm test` | Build and run integration tests in the Cloudflare runtime |
 | `npm run check` | Typecheck, build, and integration tests |
@@ -135,20 +137,27 @@ To update the featured posts, add public URLs from `@donini` to `content/posts.j
 
 Use actual numeric post IDs. The renderer validates the author and domain, sorts by post ID (newest first), and embeds up to three posts with X's official widget. Set `match` to `either` to adjust the fallback search link. Selected URLs must be checked for the intended hashtags; the widget cannot discover or filter future posts automatically. Run `npm run sync:posts` to refresh the official fallback text, then `npm run build`. Selected rich embeds require access to X to load; saved text and post links remain visible without its script. Nothing requires an X API token.
 
-## Future deployment — intentionally not performed
+## Cloudflare deployment
 
-The included database ID is a **local placeholder**. `workers_dev` is disabled. No deploy script is provided to avoid confusing local testing with publishing.
+Live address: **https://cardpress.cardpress-cloudflare.workers.dev**
 
-After local acceptance, a separate deployment step will need to:
+The Worker is named `cardpress`. `wrangler.jsonc` includes the Cloudflare account ID, D1 database ID, and enabled `workers.dev` route. These IDs identify resources; they are not credentials. OAuth credentials remain in Wrangler’s user configuration and must not be committed.
 
-1. Authenticate with the intended Cloudflare account.
-2. Create a D1 database and replace the placeholder `database_id`.
-3. Apply migrations to that remote database explicitly.
-4. Deploy the Worker and assets with `DEMO_MODE=false`.
-5. Confirm real profile access, CPU usage, caching, and embedded SVG delivery from Cloudflare.
-6. Attach the domain and move traffic only after those checks pass.
+To publish subsequent updates to the same account:
 
-No DNS, remote database, production application, or hosting settings have been changed.
+```sh
+npx wrangler login
+npm ci
+npm run check
+npm run db:remote
+npm run deploy
+```
+
+Only run the remote migration command when applying new database migrations. `npm run dev`, `npm run dev:demo`, and `npm run db:local` continue to use local resources; the explicit `--local` flags prevent changes to the hosted database.
+
+The initial deployment uses `DEMO_MODE=false` and the configured 24-hour profile cache. GitHub and X content snapshots remain static; use their sync commands before building when you want to refresh them. No GitHub-to-Cloudflare continuous deployment is configured by this repository.
+
+The existing `cardpress.us` domain and its DNS records remain unchanged. Connecting a custom domain is a separate step. Deployments to another account require a D1 database in that account and updated IDs in `wrangler.jsonc`.
 
 ## Attribution
 

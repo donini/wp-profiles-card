@@ -32,3 +32,16 @@ Cloudflare resources, remote database migrations, DNS changes, and deployment we
 - Added a regression test preventing a duplicated 2.0.0 website entry after a future GitHub content refresh.
 - `npm run check` passed: TypeScript, build, and all **21 tests**.
 - Reviewed staged files: local dependencies, generated build output, Wrangler state, and credential files are excluded.
+
+## Cloudflare publication · November 16, 2026
+
+- Published the merged main application on Cloudflare Workers at `https://cardpress.cardpress-cloudflare.workers.dev`.
+- Created the `cardpress` D1 database and applied `0001_profiles.sql` remotely.
+- Enabled the `workers.dev` route and configured `DEMO_MODE=false`.
+- Final active Worker version: `e921e466-fe3f-4f3e-9a5c-83a99c260d8e`.
+- HTTPS checks passed for the home page, guide, community page, Change Log, and database health endpoint.
+- The live JSON endpoint returned Rodrigo Donini's profile and all eight badges. The SVG endpoint returned valid XML with an embedded avatar. A separate color/avatar variant reflected the requested settings. Missing usernames returned HTTP 400.
+- Browser verification confirmed live card creation, HTTPS Markdown embed links, and X widgets. The live tab was retained for review.
+- Changed the release label from local preview to latest release and verified all six content tests after rebuilding.
+- Saved deployment commands and public resource IDs in the configuration. Credentials remain outside the repository.
+- The existing `cardpress.us` custom domain and DNS were not changed, as requested.

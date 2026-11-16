@@ -2,7 +2,7 @@
 
 ### Changelog
 
-**2.0.0** (11/16/2026) — Cloudflare rebuild (local preview)
+**2.0.0** (11/16/2026) — Cloudflare rebuild
 
 - Rebuilt with TypeScript, Cloudflare Workers, Static Assets, and D1.
 - Preserved the card and JSON endpoints, query parameters, and JSON response fields.
@@ -12,7 +12,7 @@
 - Updated the website using the CardPress logo and its blue, black, and white palette.
 - Added GitHub contributor photos and credits, imported release history, and selected X post embeds.
 - Added local development, offline demo mode, and Worker integration tests.
-- Cloudflare deployment and DNS migration remain separate steps.
+- Published on Cloudflare Workers with D1 at https://cardpress.cardpress-cloudflare.workers.dev. The existing custom domain remains unchanged.
 
 **1.0.8** (8/27/2025)
 - [FIX Added missing Core AI Contributor and Core AI Team badges](https://github.com/donini/wp-profiles-card/issues/23)
