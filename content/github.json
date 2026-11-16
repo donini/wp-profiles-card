@@ -1,0 +1,35 @@
+{
+  "repository": "donini/wp-profiles-card",
+  "fetchedAt": "2026-11-16T16:38:40.757Z",
+  "contributors": [
+    {
+      "name": "donini",
+      "login": "donini",
+      "url": "https://github.com/donini",
+      "avatar": "/static/contributors/6716090.jpg",
+      "contributions": 100
+    },
+    {
+      "name": "huzaifaalmesbah",
+      "login": "huzaifaalmesbah",
+      "url": "https://github.com/huzaifaalmesbah",
+      "avatar": "/static/contributors/63150399.jpg",
+      "contributions": 3
+    },
+    {
+      "name": "mukeshpanchal27",
+      "login": "mukeshpanchal27",
+      "url": "https://github.com/mukeshpanchal27",
+      "avatar": "/static/contributors/10103365.png",
+      "contributions": 2
+    },
+    {
+      "name": "Successfulsebunya",
+      "login": "Successfulsebunya",
+      "url": "https://github.com/Successfulsebunya",
+      "avatar": "/static/contributors/12773149.jpg",
+      "contributions": 1
+    }
+  ],
+  "changelog": "# CardPress\n\n### Changelog\n\n**1.0.8** (8/27/2025)\n- [FIX Added missing Core AI Contributor and Core AI Team badges](https://github.com/donini/wp-profiles-card/issues/23)\n\n**1.0.7** (8/20/2025)\n- [FIX Added missing Playground Contributor badge](https://github.com/donini/wp-profiles-card/issues/21)\n\n**1.0.6** (6/18/2025)\n\n- [NEW Profile Creator Wizard](https://github.com/donini/wp-profiles-card/issues/19)\n\n**1.0.5** (6/10/2025)\n\n- [NEW Add option to link the card to WordPress profile page](https://github.com/donini/wp-profiles-card/issues/11)\n- [NEW Display or not profile avatar](https://github.com/donini/wp-profiles-card/issues/3)\n\n**1.0.4** (6/5/2025)\n\n- NEW Move static path for avatars\n- NEW Store JSON data\n- FIX Optimize SEO image\n\n**1.0.3** (6/3/2025)\n\n- FIX Missing badges and wrong style\n- [NEW Profile API - JSON Data](https://github.com/donini/wp-profiles-card/issues/12)\n- FIX JSON resulting in a CORS security error\n\n**1.0.2** (6/2/2025)\n\n- FIX WordCamp volunteer badge issue \n- FIX Card Sample image width issue in Readme\n\n**1.0.1** (6/1/2025)\n\n- [FIX Badge Icons Overlap with Circular Containers](https://github.com/donini/wp-profiles-card/pull/6)\n- [NEW Add header toggle functionality](https://github.com/donini/wp-profiles-card/pull/8)\n- [NEW Custom Text Color](https://github.com/donini/wp-profiles-card/issues/1)\n- [NEW Custom Foreground Color](https://github.com/donini/wp-profiles-card/issues/2)\n\n**1.0.0** (5/26/2025)\n- First release - CardPress launch"
+}
