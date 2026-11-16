@@ -1,0 +1,21 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "cardpress",
+  "main": "src/worker.ts",
+  "compatibility_date": "2026-11-16",
+  "workers_dev": false,
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "run_worker_first": ["/card", "/json", "/api/*", "/health"],
+    "not_found_handling": "404-page"
+  },
+  "d1_databases": [{
+    "binding": "DB",
+    "database_name": "cardpress",
+    "database_id": "00000000-0000-0000-0000-000000000000",
+    "migrations_dir": "migrations"
+  }],
+  "vars": { "DEMO_MODE": "false", "PROFILE_TTL_SECONDS": "86400" },
+  "observability": { "enabled": true }
+}
