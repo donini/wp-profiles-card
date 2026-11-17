@@ -16,7 +16,9 @@
     "check": "npm run typecheck && npm test",
     "sync:github": "node scripts/sync-github.mjs",
     "pages": "node scripts/pages.mjs",
-    "sync:posts": "node scripts/sync-posts.mjs"
+    "sync:posts": "node scripts/sync-posts.mjs",
+    "deploy": "npm run build && wrangler deploy",
+    "db:remote": "wrangler d1 migrations apply DB --remote"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "5.20261116.1",

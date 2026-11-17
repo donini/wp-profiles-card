@@ -32,3 +32,26 @@ Cloudflare resources, remote database migrations, DNS changes, and deployment we
 - Added a regression test preventing a duplicated 2.0.0 website entry after a future GitHub content refresh.
 - `npm run check` passed: TypeScript, build, and all **21 tests**.
 - Reviewed staged files: local dependencies, generated build output, Wrangler state, and credential files are excluded.
+
+## Cloudflare publication · November 16, 2026
+
+- Published the merged main application on Cloudflare Workers at `https://cardpress.cardpress-cloudflare.workers.dev`.
+- Created the `cardpress` D1 database and applied `0001_profiles.sql` remotely.
+- Enabled the `workers.dev` route and configured `DEMO_MODE=false`.
+- Final active Worker version: `e921e466-fe3f-4f3e-9a5c-83a99c260d8e`.
+- HTTPS checks passed for the home page, guide, community page, Change Log, and database health endpoint.
+- The live JSON endpoint returned Rodrigo Donini's profile and all eight badges. The SVG endpoint returned valid XML with an embedded avatar. A separate color/avatar variant reflected the requested settings. Missing usernames returned HTTP 400.
+- Browser verification confirmed live card creation, HTTPS Markdown embed links, and X widgets. The live tab was retained for review.
+- Changed the release label from local preview to latest release and verified all six content tests after rebuilding.
+- Saved deployment commands and public resource IDs in the configuration. Credentials remain outside the repository.
+- The existing `cardpress.us` custom domain and DNS were not changed, as requested.
+
+## Custom domain connection · November 17, 2026
+
+- Connected `cardpress.us` and `www.cardpress.us` to the `cardpress` Worker as Cloudflare-managed custom domains.
+- Replaced the old apex A record and www CNAME after explicit user confirmation. Saved their prior values before replacement. The wildcard record was preserved.
+- Cloudflare registered both hostname bindings and generated certificate IDs for them. Final Worker version: `61220be9-f521-48ad-9d3a-b55917e030c5`.
+- After routing propagation, all eight HTTPS checks passed: home, database health, JSON profile data, and SVG cards on both hostnames.
+- Each JSON response included all eight current badges. Each SVG response was valid XML with an embedded avatar.
+- Browser verification on `https://cardpress.us` confirmed successful card creation and share URLs using the custom domain.
+- The existing workers.dev address remains enabled as a fallback. No application code or database schema changed during the domain connection.
