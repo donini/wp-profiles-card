@@ -143,7 +143,7 @@ Primary address: **https://cardpress.us**
 
 Also served by the same Worker: https://www.cardpress.us and https://cardpress.cardpress-cloudflare.workers.dev.
 
-The Worker is named `cardpress`. `wrangler.jsonc` includes the Cloudflare account ID, D1 database ID, and enabled `workers.dev` route. These IDs identify resources; they are not credentials. OAuth credentials remain in Wrangler’s user configuration and must not be committed.
+The Worker is named `cardpress`. `wrangler.jsonc` includes the Cloudflare account ID, D1 database ID, and enabled `workers.dev` route. These IDs identify resources; they are not credentials. OAuth credentials remain in Wrangler’s user configuration and must not be committed. Local `.env*` and `.dev.vars*` files, private key containers, local database copies, and `wrangler.local.*` / `wrangler.*.local.*` overrides are ignored by Git. Keep example files limited to placeholders; never put credentials in tracked configuration or documentation.
 
 To publish subsequent updates to the same account:
 

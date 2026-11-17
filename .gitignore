@@ -1,10 +1,39 @@
+# Dependencies and generated output
 node_modules/
 dist/
+.npm-cache/
+
+# Local Cloudflare runtime state and secret variables
 .wrangler/
-.dev.vars
+.dev.vars*
+!.dev.vars.example
 .env*
 !.env.example
+
+# Local credentials and machine-specific configuration
+.secrets/
+.local/
+wrangler.local.*
+wrangler.*.local.*
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Local database copies and SQLite sidecar files
+*.db
+*.db-journal
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+*.sqlite-journal
+*.sqlite-shm
+*.sqlite-wal
+*.sqlite3-journal
+*.sqlite3-shm
+*.sqlite3-wal
+
+# Logs and OS files
 *.log
 .DS_Store
-
-.npm-cache/
