@@ -5,6 +5,10 @@
   "main": "src/worker.ts",
   "compatibility_date": "2026-11-16",
   "workers_dev": true,
+  "routes": [
+    { "pattern": "cardpress.us", "custom_domain": true },
+    { "pattern": "www.cardpress.us", "custom_domain": true }
+  ],
   "assets": {
     "directory": "./public",
     "binding": "ASSETS",

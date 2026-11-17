@@ -45,3 +45,13 @@ Cloudflare resources, remote database migrations, DNS changes, and deployment we
 - Changed the release label from local preview to latest release and verified all six content tests after rebuilding.
 - Saved deployment commands and public resource IDs in the configuration. Credentials remain outside the repository.
 - The existing `cardpress.us` custom domain and DNS were not changed, as requested.
+
+## Custom domain connection · November 17, 2026
+
+- Connected `cardpress.us` and `www.cardpress.us` to the `cardpress` Worker as Cloudflare-managed custom domains.
+- Replaced the old apex A record and www CNAME after explicit user confirmation. Saved their prior values before replacement. The wildcard record was preserved.
+- Cloudflare registered both hostname bindings and generated certificate IDs for them. Final Worker version: `61220be9-f521-48ad-9d3a-b55917e030c5`.
+- After routing propagation, all eight HTTPS checks passed: home, database health, JSON profile data, and SVG cards on both hostnames.
+- Each JSON response included all eight current badges. Each SVG response was valid XML with an embedded avatar.
+- Browser verification on `https://cardpress.us` confirmed successful card creation and share URLs using the custom domain.
+- The existing workers.dev address remains enabled as a fallback. No application code or database schema changed during the domain connection.

@@ -1,6 +1,6 @@
 # CardPress · Cloudflare edition
 
-CardPress rebuilt for Cloudflare Workers, Static Assets, and D1. The previous Express application remains available in Git history. Published on Cloudflare Workers at https://cardpress.cardpress-cloudflare.workers.dev. Local development remains available; the existing custom domain has not been moved.
+CardPress rebuilt for Cloudflare Workers, Static Assets, and D1. The previous Express application remains available in Git history. Published on Cloudflare Workers at https://cardpress.us, also available at https://www.cardpress.us. The Cloudflare-provided address remains available at https://cardpress.cardpress-cloudflare.workers.dev.
 
 ## Test locally
 
@@ -139,7 +139,9 @@ Use actual numeric post IDs. The renderer validates the author and domain, sorts
 
 ## Cloudflare deployment
 
-Live address: **https://cardpress.cardpress-cloudflare.workers.dev**
+Primary address: **https://cardpress.us**
+
+Also served by the same Worker: https://www.cardpress.us and https://cardpress.cardpress-cloudflare.workers.dev.
 
 The Worker is named `cardpress`. `wrangler.jsonc` includes the Cloudflare account ID, D1 database ID, and enabled `workers.dev` route. These IDs identify resources; they are not credentials. OAuth credentials remain in Wrangler’s user configuration and must not be committed.
 
@@ -157,7 +159,7 @@ Only run the remote migration command when applying new database migrations. `np
 
 The initial deployment uses `DEMO_MODE=false` and the configured 24-hour profile cache. GitHub and X content snapshots remain static; use their sync commands before building when you want to refresh them. No GitHub-to-Cloudflare continuous deployment is configured by this repository.
 
-The existing `cardpress.us` domain and its DNS records remain unchanged. Connecting a custom domain is a separate step. Deployments to another account require a D1 database in that account and updated IDs in `wrangler.jsonc`.
+The `cardpress.us` and `www.cardpress.us` custom domains are declared in `wrangler.jsonc`. Cloudflare manages their Worker DNS records and HTTPS certificates. Both hostnames serve the same application and D1 profile cache, and the creator generates embed links from the hostname being used. Deployments to another account require a D1 database in that account, the relevant Cloudflare zone, and updated IDs in `wrangler.jsonc`.
 
 ## Attribution
 
